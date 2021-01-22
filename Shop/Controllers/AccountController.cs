@@ -18,5 +18,11 @@ namespace Shop.Controllers
       _signInManager = signInManager;
       _db = db;
     }
+
+    public ActionResult Index()
+    {
+      return View();
+    }
+
   }
 }
