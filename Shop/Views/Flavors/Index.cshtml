@@ -3,11 +3,11 @@
 }
 
 @using Shop.Models;
-@model IEnumerable<Shop.Models.Flavor>
+@model List<Flavor>
 
 <h1>Flavor Page for @User.Identity.Name</h1>
 
-@if (@Model.Any())
+@if (Model != null && Model.Count > 0)
 {
   <ul>
     @foreach (Flavor flavor in Model)
