@@ -19,6 +19,29 @@ namespace Shop
       Configuration = builder.Build();
     }
 
+    public IConfigurationRoot Configuration { get; set; }
 
+    public void ConfigureServices(IServiceCollection services)
+    {
+      services.AddMvc();
+
+      services.AddEntityFrameworkMySql()
+        .AddDbContext<ShopContext>(options => options
+        .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
+
+      services.AddIdentity<ApplicationUser, IdentityRole()
+        .AddEntityFrameworkStores<ShopContext>()
+        .AddDefaultTokenProviders();
+
+      services.Configure<IdentityOptions>(options => 
+      {
+        options.Password.RequireDigit = false;
+        options.Password.RequiredLength = 0;
+        options.Password.RequireLowercase = false;
+        options.Password.RequireNonALphanumeric = false;
+        options.Password.RequireUppercase = false;
+        options.Password.RequiredUniqueChars = 0;
+      });
+    }
   }
 }
