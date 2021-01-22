@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shop.Models.Flavor
+
+<h3>Edit thisFlavor: @Html.DisplayFor(model => model.Name)</h3>
+
+@using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.FlavorId)
+
+  @Html.LabelFor(model => model.Name)
+  @Html.EditorFor(model => model.Name)
+
+  @Html.Label("Associate Treat with Flavor")
+  @Html.DropDownList("TreatId")
+
+  <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Show All Flavors", "Index")</p>
