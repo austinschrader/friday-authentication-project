@@ -29,11 +29,11 @@ namespace Shop
         .AddDbContext<ShopContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"]));
 
-      services.AddIdentity<ApplicationUser, IdentityRole()
+      services.AddIdentity<ApplicationUser, IdentityRole>()
         .AddEntityFrameworkStores<ShopContext>()
         .AddDefaultTokenProviders();
 
-      services.Configure<IdentityOptions>(options => 
+      services.Configure<IdentityOptions>(options =>
       {
         options.Password.RequireDigit = false;
         options.Password.RequiredLength = 0;
@@ -55,11 +55,11 @@ namespace Shop
       app.UseMvc(routes =>
       {
         routes.MapRoute(
-          name: "default"
+          name: "default",
           template: "{controller=Home}/{action=Index}/{id?}");
       });
-  
-      app.Run(async (context) => 
+
+      app.Run(async (context) =>
       {
         await context.Response.WriteAsync("Something went terribly wrong!");
       });
