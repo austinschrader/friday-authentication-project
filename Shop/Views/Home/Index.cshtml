@@ -1,0 +1,21 @@
+@{
+  Layout = "_Layout";
+}
+
+<h1>Pierre's Shop Administration Panel</h1>
+
+<h2>Dashboard:</h2>
+<p>From here, you can manage your shop.</p>
+<ul>
+  <li>Add flavor</li>
+  <li>Add treats</li>
+  <li>Associate flavors with treats</li>
+  <li>Delete flavors</li>
+  <li>Delete treats</li>
+  <li>And much more!</li>
+</ul>
+
+<div class="btn btn-success">@Html.ActionLink("View all Flavors", "Index", "Flavors")</div>
+<div class="btn btn-danger">@Html.ActionLink("View all Treats", "Index", "Treats")</div>
+
+<p>@Html.ActionLink("Create an account", "Index", "Account")</p>
