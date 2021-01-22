@@ -32,5 +32,11 @@ namespace Shop.Controllers
       return View(userFlavors);
     }
 
+    public ActionResult Create()
+    {
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      return View();
+    }
+
   }
 }
