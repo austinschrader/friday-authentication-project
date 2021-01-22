@@ -9,5 +9,16 @@ using Shop.Models;
 
 namespace Shop
 {
-  
+  public class Startup
+  {
+    public Startup(IHostingEnvironment env)
+    {
+      var builder = new ConfigurationBuilder()
+        .SetBasePath(env.ContentRootPath)
+        .AddJsonFile("appsettings.json");
+      Configuration = builder.Build();
+    }
+
+
+  }
 }
