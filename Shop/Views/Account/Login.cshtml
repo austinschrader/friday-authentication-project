@@ -1,0 +1,13 @@
+@{
+  Layout = "_Layout";
+}
+
+@using Shop.ViewModels
+@model LoginViewModel
+
+<h2>Login to your account</h2>
+@using (Html.BeginForm())
+{
+  @Html.LabelFor(m => m.Email)
+  @Html.TextBoxFor(m => m.Email)
+}
