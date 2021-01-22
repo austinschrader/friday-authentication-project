@@ -15,4 +15,15 @@ namespace Shop.Controllers
     {
       _db = db;
     }
+
+    public ActionResult Index()
+    {
+      List<Treat> model = _db.Treats.ToList();
+      return View(model);
+    }
+
+    public ActionResult Create()
+    {
+      return View();
+    }
   }
