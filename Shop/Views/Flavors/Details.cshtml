@@ -1,0 +1,37 @@
+@{
+  Layout = "_Layout";
+}
+
+@model Shop.Models.Flavor
+
+<h3>Flavor Details</h3>
+
+<h5>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h5>
+
+@if (@Model.Treats.Count == 0)
+{
+  <h2>This flavor is not assigned to fix any treats</h2>
+}
+else
+{
+
+  <h4>Treats assigned to this flavor</h4>
+
+  <ul>
+    @foreach (var join in Model.Treats)
+    {
+      <li>@join.Treat.Name</li>
+      @using (Html.BeginForm("DeleteTreat", "Flavors"))
+      {
+        @Html.Hidden("joinId", @join.TreatFlavorId)
+        <input type="submit" value="Deassociate" />
+      }
+    }
+  </ul>
+
+}
+
+<p>@Html.ActionLink("Back to Flavors", "Index")</p>
+<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Add a Treat", "AddTreat", new { id = Model.FlavorId })</p>
+<p>@Html.ActionLink("Remove Flavor", "Delete", new { id = Model.FlavorId })</p>
